@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +16,22 @@
             prompt(). Determine se o número digitado é par
             ou ímpar e informe ao usuário usando alert().
         */
+
+        // parseInt(): tenta converter a entrada em um número válido
+        // e retorna NaN se não conseguir
+        let numero = parseInt(prompt('Informe um número inteiro:'))
+
+        // Testando se é realmente um número
+        if(isNaN(numero)) {     // Conversão do parseInt() falhou
+            alert('O VALOR INFORMADO NÃO É UM NÚMERO INTEIRO VÁLIDO.')
+        }
+        // Verificando se o resto da divisão do número por 2 deu 0
+        else if(numero % 2 === 0) {
+            alert('O número informado é PAR.')
+        }
+        else {
+            alert('O número informado é ÍMPAR.')
+        }
         
         
     </script>
