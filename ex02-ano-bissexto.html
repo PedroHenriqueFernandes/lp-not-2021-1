@@ -28,7 +28,49 @@
             2013: não é
 
             A regra vale para anos >= 1582
-      */
+        */
+
+        let ano = parseInt(prompt('Informe um ano maior ou igual a 1582:'))
+
+        /*
+        if(isNaN(ano) || ano < 1582) {
+            alert('ERRO: o ano informado é inválido!')
+        }
+        // Ano divisível por 400 é sempre bissexto
+        else if(ano % 400 === 0) {
+            alert('O ano ' + ano + ' é bissexto.')
+        }
+        // Se não, o ano pode ainda ser bissexto caso seja divisível por 4
+        // mas NÃO seja divisível por 100
+        // Outra forma: else if(ano % 4 === 0 && ano % 100 !== 0)
+        // Ainda outra forma: else if(ano % 4 === 0 && ano % 100 > 0)
+        else if(ano % 4 === 0 && !(ano % 100 === 0)) {
+            alert('O ano ' + ano + ' é bissexto.')
+        }
+        else {
+            alert('O ano ' + ano + ' NÃO é bissexto.')
+        }
+        */
+
+        if(isNaN(ano) || ano < 1582) {
+            alert('ERRO: o ano informado é inválido!')
+        }
+        // Todas as regras de bissexto em uma única expressão
+        else if(ano % 400 === 0 || (ano % 4 === 0 && !(ano % 100 === 0))) {
+            //alert('O ano ' + ano + ' é bissexto.')
+            // Mensagem usando string template com interpolação de variável
+            alert(`O ano ${ano} é bissexto.`)
+        }
+        else {
+            // alert('O ano ' + ano + ' NÃO é bissexto.')
+            // Mensagem usando string template com interpolação de variável
+            alert(`O ano ${ano} NÃO é bissexto.`)
+        }
+
+        // Outro exemplo de interpolação de variáveis em string template
+        //let a = 5, b = 4, c = 2
+        //alert('O valor de ' + a + ' somado com ' + b + ' somado com ' + c + ' é igual a ' + (a + b + c))
+        //alert(`O valor de ${a} somado com ${b} somado com ${c} é igual a ${a + b + c}`)
 
     </script>
 </head>
