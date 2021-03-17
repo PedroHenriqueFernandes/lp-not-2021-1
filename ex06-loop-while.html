@@ -27,6 +27,34 @@
 
         */
 
+        let extensao
+
+        do {
+            extensao = parseInt(prompt('Informe a extensão da rodovia (> 200):'))
+        } while(isNaN(extensao) || extensao <= 200)
+
+        /*let km = 1
+        while (km <= extensao) {
+            if(km % 31 === 0) {     // Múltiplo de 31
+                document.write(`No km ${km} há um pedágio.<br>`)
+            }
+            if(km % 23 === 0) {     // Múltiplo de 23
+                document.write(`No km ${km} há um posto de atendimento ao usuário.<br>`)
+            }
+            // Incremento do km
+            km++
+        }*/
+
+        // Fazendo a mesma coisa, com o loop for
+        for(let km = 1; km <= extensao; km++) {
+            if(km % 31 === 0) {     // Múltiplo de 31
+                document.write(`No km ${km} há um pedágio.<br>`)
+            }
+            if(km % 23 === 0) {     // Múltiplo de 23
+                document.write(`No km ${km} há um posto de atendimento ao usuário.<br>`)
+            }            
+        }
+
     </script>
 </head>
 <body>

@@ -41,6 +41,46 @@
 
         */
 
+        let num
+
+        // Repete a pergunta ao usuário enquanto ele não infomar um número válido
+        // que esteja na faixa entre 0 e 9
+        do {
+            num = parseInt(prompt('Informe um dígito de 0 a 9:'))
+        } while(isNaN(num) || num < 0 || num > 9)
+
+        switch(num) {
+            case 0:
+                alert('A é a letra correspondente ao dígito.')
+                break
+            case 1:
+                alert('B é a letra correspondente ao dígito.')
+                break
+            case 2:
+                alert('C é a letra correspondente ao dígito.')
+                break
+            case 3:
+                alert('D é a letra correspondente ao dígito.')
+                break
+            case 4:
+                alert('E é a letra correspondente ao dígito.')
+                break
+            case 5:
+                alert('F é a letra correspondente ao dígito.')
+                break
+            case 6:
+                alert('G é a letra correspondente ao dígito.')
+                break
+            case 7:
+                alert('H é a letra correspondente ao dígito.')
+                break
+            case 8:
+                alert('I é a letra correspondente ao dígito.')
+                break
+            default:  // poderia ser também case 9:
+                alert('J é a letra correspondente ao dígito.')
+        }
+
     </script>
 </head>
 <body>
