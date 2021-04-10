@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página modelo</title>
+    <script>
+        // Ativa verificações adicionais de variáveis
+        // Modo "chato" do JavaScript
+        'use strict'
+        
+        /*
+            Peça ao usuário para informar dois números (inteiros ou não) e
+            exiba a soma desses números.
+        */
+
+        let num1, num2, soma
+
+        // Métodos de conversão de string para número:
+        // parseInt() -> converte string em um número inteiro (ignora casas decimais)
+        // parseFloat() -> converte string em um número com casas decimais
+        // Number() -> funciona como o parseFloat()
+
+        // 12.567
+        // 125.67
+
+        do {
+            num1 = parseFloat(prompt('Informe o primeiro número:'))
+        } while(isNaN(num1))
+
+        do {
+            num2 = Number(prompt('Informe o segundo número:'))
+        } while(isNaN(num2))
+
+        // Quando parseInt(), parseFloat() ou Number() não consegem converter
+        // uma string em número, retornam um valor especial chamado NaN (Not a Number,
+        // não é um número).
+
+        // Podemos detectar se a conversão falhou pelo uso da função isNaN(), que retorna
+        // true caso o valor testado seja NaN.
+
+        /*
+        // Validações
+        if(isNaN(num1)) {
+            alert('O primeiro valor informado não é um número.')
+        }
+        else if(isNaN(num2)) {
+            alert('O segundo valor informado não é um número.')
+        }
+        else {
+            soma = num1 + num2
+            alert('A soma dos dois números é ' + soma)
+        }
+        */
+        soma = num1 + num2
+        alert('A soma dos dois números é ' + soma)
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

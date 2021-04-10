@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página modelo</title>
+    <script>
+        // Ativa verificações adicionais de variáveis
+        // Modo "chato" do JavaScript
+        'use strict'
+
+        /*
+            Implemente um loop for que, começando em 3, indo até 1000, e
+            avançando de 3 em 3, imprima com document.write() apenas os
+            valores da variável de controle que sejam múltiplos de 7.
+        */
+
+        /*
+        // Contagem regressiva de 10 a 0
+        for(let i = 10; i >= 0; i--) {
+            alert(i)
+        }
+        */
+
+        let num, i, result
+        do {
+            num = parseInt(prompt('Informe um número entre 1 e 10:'))
+        } while(isNaN(num) || num < 1 || num > 10)
+
+        for(i = 0; i <= 10; i++) {
+            result = num * i
+            document.write(`${num} x ${i} = ${result}<br>`)
+        }
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

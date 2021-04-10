@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página modelo</title>
+    <script>
+        // Ativa verificações adicionais de variáveis
+        // Modo "chato" do JavaScript
+        'use strict'
+
+        let x, y, produto
+
+        x = parseFloat(prompt('Informe um número:'))
+        y = parseFloat(prompt('Informe outro número:'))
+
+        // Função que recebe dois números e retorna seu produto
+        // Declaração da função
+        function multip(n1, n2) {
+            // Quando uma função tem retorno, ela contém pelo menos uma 
+            // linha iniciada com a palavra return
+            return n1 * n2
+        }
+
+        produto = multip(x, y)  // Chamada da função
+        //alert('O produto dos dois números informados é ' + produto)
+        alert('O produto dos dois números informados é ' + multip(x, y))
+
+        // O resultado de uma função COM RETORNO pode ser atribuído a uma variável
+        //let resultado = multip(12.7, 6.9)
+
+        //alert(resultado)
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
