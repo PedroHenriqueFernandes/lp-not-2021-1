@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página modelo</title>
+    <script>
+        // Ativa verificações adicionais de variáveis
+        // Modo "chato" do JavaScript
+        'use strict'
+
+        /*
+
+            2) Declare uma função que não recebe argumento. Dentro dela, usando um loop for, imprima
+            com document.write() a lista dos quilômetros em que havará estações de embarque e
+            desembarque, no sentido Franca – São Paulo, lembrando que o km 1 fica em São Paulo e o
+            km 400, em Franca. Essa função não deverá ter valor de retorno.
+
+        */
+
+        // Declaração de função
+        function exibeEstacoes() {
+            // For decrescente
+            for(let km = 400; km >= 1; km--) {
+                if(km % 50 === 0) {
+                    document.write(`Estação de embarque/desembarque no km ${km}<br>`)
+                }
+            }
+
+            // Solução alternativa, também considerada na correção da prova
+            /*for(let km = 400; km >= 1; km -= 50) {
+                document.write(`Estação de embarque/desembarque no km ${km}<br>`)     
+            }*/
+        }
+
+        /*
+            3) Obtenha do usuário um número de quilômetro. Valide a entrada do usuário, repetindo a
+            pergunta até que ele informe um número válido e que esteja entre 1 e 400 (inclusive).
+        */
+        let km
+        do {
+            km = parseInt(prompt('Informe um quilômetro entre 1 e 400:'))
+        } while(isNaN(km) || km < 1 || km > 400)
+
+        /*
+            4) Utilizando a estrutura switch, verifique se o quilômetro informado pelo usuário possui
+            alguma das comodidades disponíveis ao longo da linha e, se for o caso, exiba-a usando
+            alert(). Se não houver nada no quilômetro, exiba 'Nada aqui.'.
+
+            • Km 98, 190, 283 e 379: Postos de conveniência da Rede Mil Grau
+            • Km 155 e 355: Postos da Polícia Ferroviária (sim, isso existe!)
+            • Km 137: Aeroporto Interplanetário de Virapratos
+            • Km 204: Hotel Cacique Internacional 6 estrelas
+            • Km 311: Boleli shopping center
+            • Km 356: Acesso ao Acqua Park Unidade III
+        */
+        switch(km) {
+            case 98:
+            case 190:
+            case 283:
+            case 379:
+                alert('Posto de conveniência da Rede Mil Grau')
+                break
+
+            case 155:
+            case 355:
+                alert('Posto da Polícia Ferroviária')
+                break
+
+            case 137:
+                alert('Aeroporto Interplanetário de Virapratos')
+                break
+                
+            case 204:
+                alert('Hotel Cacique Internacional 6 estrelas')
+                break
+
+            case 311:
+                alert('Boleli shopping center')
+                break
+
+            case 356:
+                alert('Acesso ao Acqua Park Unidade III')
+                break
+
+            default:
+                alert('Nada aqui.')
+        }
+
+        /*
+            5) Efetue a chamada à função declarada em 2) para exibir os quilômetros com estações.
+        */
+        exibeEstacoes() // Chamada de função
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
