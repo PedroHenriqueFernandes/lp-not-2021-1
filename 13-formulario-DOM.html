@@ -101,12 +101,14 @@
         const elFormaTratamento = document.getElementById('forma-tratamento')
         const elMasculino = document.getElementById('masculino')
         const elFeminino = document.getElementById('feminino')
+
         const elHoraDia = document.querySelector('#hora-dia') 
         const elAlert = document.querySelector('#alert')
         const elDocument = document.querySelector('#document')
         const elSaudacao = document.querySelector('#saudacao')
         const elEnviar = document.querySelector('#enviar')
 
+        /* Declaração de função sem argumentos */
         function validar() {
             // Retorna true caso todos os campos do formulário tiverem
             // sido preenchidos corretamente, ou false, caso contrário
@@ -114,9 +116,113 @@
             if(elPrimeiroNome.value === '') {
                 alert('O primeiro nome deve ser preenchido.')
                 elPrimeiroNome.focus()  // Coloca o cursor no campo
+                return false    // Não passou na validação
+            }
+
+            if(elSobrenome.value === '') {
+                alert('O sobrenome deve ser preenchido.')
+                elSobrenome.focus()
                 return false
             }
+
+            if(elFormaTratamento.selectedIndex === 0) {
+                alert('Selecione uma opção de forma de tratamento.')
+                elFormaTratamento.focus()
+                return false
+            }
+
+            let horaDia = parseInt(elHoraDia.value)
+            if(isNaN(horaDia) || horaDia < 0 || horaDia > 23) {
+                alert('Informe uma hora válida entre 0 e 23.')
+                elHoraDia.focus()
+                return false
+            }
+
+            if((! elAlert.checked) && (! elDocument.checked)) {
+                alert('Selecione pelo menos uma das opções de exibição.')
+                elAlert.focus()
+                return false
+            }
+
+            return true  // O formulário está válido
         }
+
+        function exibirMensagem() {
+            if(validar()) { // Se o formulário for válido (tiver retornado true)
+                // Boa noite, Excelentíssima Maria Catupirina! Como posso ser útil?
+                let mensagem
+
+                let horaDia = parseInt(elHoraDia.value)
+                if(horaDia < 12) {
+                    mensagem = 'Bom dia, '
+                }
+                else if(horaDia < 18) {
+                    mensagem = 'Boa tarde, '
+                }
+                else {
+                    mensagem = 'Boa noite, '
+                }
+
+                switch(elFormaTratamento.selectedIndex) {
+                    case 1: // Vossa Majestade
+                        mensagem += 'Vossa Majestade '
+                        break
+
+                    case 2: // Excelentíssimo/a
+                        if(elFeminino.checked) {
+                            mensagem += 'Excelentíssima '
+                        }
+                        else {
+                            mensagem += 'Excelentíssimo '
+                        }
+                        break
+                        
+                    case 3: // Ilustríssimo/a
+                        if(elFeminino.checked) {
+                            mensagem += 'Ilustríssima '
+                        }
+                        else {
+                            mensagem += 'Ilustríssimo '
+                        }
+                        break
+
+                    case 4: // Vossa Senhoria
+                        mensagem += 'Vossa Senhoria '
+                        break
+
+                    case 5: // Senhor/a
+                        if(elFeminino.checked) {
+                            mensagem += 'Senhora '
+                        }
+                        else {
+                            mensagem += 'Senhor '
+                        }
+                        break
+
+                    default: // Cremosíssimo/a (case 6)
+                        if(elFeminino.checked) {
+                            mensagem += 'Cremosíssima '
+                        }
+                        else {
+                            mensagem += 'Cremosíssimo'
+                        }
+                }
+
+                mensagem += elPrimeiroNome.value + ' '
+                mensagem += elSobrenome.value + '! Como posso ser útil?'
+
+                if(elAlert.checked) {
+                    alert(mensagem)
+                }
+
+                if(elDocument.checked) {
+                    elSaudacao.textContent = mensagem
+                }
+ 
+            }
+        }
+
+        elEnviar.addEventListener('click', exibirMensagem)
 
     </script>
 </body>
