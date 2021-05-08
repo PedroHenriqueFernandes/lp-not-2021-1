@@ -75,6 +75,104 @@
         frutas.push('melancia')
         document.write('Vetor frutas depois: ' + frutas + '<br>')
 
+        // Inserindo um novo elemento no INÍCIO do vetor: unshift()
+        carros.unshift('DeLorean')
+        document.write('carros: ' + carros + '<br>')
+        carros.unshift('Belina')
+        document.write('carros: ' + carros + '<br>')
+        carros.unshift('Chevette')
+        document.write('carros: ' + carros + '<br>')
+
+        // Retirando um elemento do FINAL do vetor: pop()
+        let retirado = carros.pop()
+        document.write(retirado + '<br>')
+        document.write('carros: ' + carros + '<br>')
+        retirado = carros.pop()
+        document.write(retirado + '<br>')
+        document.write('carros: ' + carros + '<br>')
+
+        // Retirando um elemento do INÍCIO do vetor: shift()
+        retirado = carros.shift()
+        document.write(retirado + '<br>')
+        document.write('carros: ' + carros + '<br>')
+        retirado = carros.shift()
+        document.write(retirado + '<br>')
+        document.write('carros: ' + carros + '<br>')
+
+        // Inserindo um elemento em uma posição específica: splice()
+        // Parâmetros do splice() para inserção:
+        // 1º -> a posição onde vai acontecer a inserção
+        // 2º -> quantos elementos serão removidos na operação? (para
+        //       inserção, deve ser 0)
+        // 3º -> o valor a ser inserido
+        carros.splice(1, 0, 'Brasília')
+        document.write('carros: ' + carros + '<br>')
+        carros.splice(2, 0, 'Alpha Romeo')
+        document.write('carros: ' + carros + '<br>')
+        
+        // Mesmo que: carros.unshift('Variant')
+        carros.splice(0, 0, 'Variant')
+                
+        document.write('carros: ' + carros + '<br>')
+        
+        // Mesmo que: carros.push('Corcel')
+        carros.splice(carros.length, 0, 'Corcel')
+        
+        document.write('carros: ' + carros + '<br>')
+
+        // 1º parâmetro negativo conta as posições de trás p/ frente
+        carros.splice(-2, 0, 'Fusca')
+        document.write('carros: ' + carros + '<br>')
+
+        // Retirando elementos de uma posição específica: splice()
+        // Parâmetros de splice() para remoção:
+        // 1º -> posição onde será feita a retirada
+        // 2º -> Quantos elementos serão retirados? (> 0)
+        // Não tem o terceiro parâmetro
+        retirado = carros.splice(3, 1)
+        document.write(retirado + '<br>')
+        document.write('carros: ' + carros + '<br>')
+        retirado = carros.splice(1, 2)
+        document.write(retirado + '<br>')
+        document.write('carros: ' + carros + '<br>')
+
+        // Mesmo que: carros.shift()
+        retirado = carros.splice(0, 1)
+        document.write(retirado + '<br>')
+        document.write('carros: ' + carros + '<br>')
+
+        // Mesmo que: carros.pop()
+        retirado = carros.splice(carros.length - 1, 1)
+        document.write(retirado + '<br>')
+        document.write('carros: ' + carros + '<br>')
+
+        // Substituição de um elemento no vetor: splice()
+        // Parâmetros do splice() para substituição
+        // 1º -> Posição para substituir
+        // 2º -> Quantos elementos serão retirados (> 0)
+        // 3º -> Novos valores a serem inseridos
+        carros.splice(0, 1, 'Gol')
+        document.write('carros: ' + carros + '<br>')
+        carros.splice(1, 1, 'Apolo', 'Marea')
+        document.write('carros: ' + carros + '<br>')
+
+        // Colocando mais alguns carros, com push(), todos de 
+        // uma vez
+        carros.push('Corsa', 'Tempra', 'Kadett', 'Palio')
+        document.write('carros: ' + carros + '<br>')
+
+        // PERCURSO DE VETOR: significa visitar cada um dos elementos
+        // para fazer algo com ele
+        document.write('<hr>')  // Traço horizontal
+        for(let i = 0; i < carros.length; i++) {
+            // Escrevendo os nomes de cada carro EM MAIÚSCULAS, 
+            // um por linha
+            document.write(carros[i].toUpperCase() + '<br>')
+        }
+
+
+
+
         
     </script>
 </head>
