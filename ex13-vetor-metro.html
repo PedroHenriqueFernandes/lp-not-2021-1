@@ -21,6 +21,27 @@
             1) Crie um vetor vazio e depois insira as estações no
                 vetor. Faça um loop for TRADICIONAL para exibir as 
                 estações e depois passe um traço horizontal (<hr>).
+        */
+
+        // Criando um vetor vazio
+        const linha = []    // Alternativa: const linha = Array()
+        
+        // Inserindo as estações (nesse caso, no final do vetor)
+        linha.push('Santa Teresinha')
+        linha.push('Estação')
+        linha.push('Centro')
+        linha.push('Jardim Lima')
+        linha.push('Aeroporto I')
+        // Alternativa:
+        // linha.push('Santa Teresinha', 'Estação', 'Centro', 'Jardim Lima', 'Aerporto I')
+
+        // Loop for tradicional
+        for(let i = 0; i < linha.length; i++) {
+            document.write(linha[i] + '<br>')
+        }
+        document.write('<hr>')  // Traço
+
+        /*
                 
             No ano seguinte, a linha foi expandida com a inauguração
             das estações City Petrópolis, no extremo norte, e Aeroporto
@@ -29,6 +50,21 @@
             2) Insira as novas estações no vetor nas posições apropriadas.
                 Faça um loop FOR..OF para exibir as estações e depois
                 passe um traço horizontal (<hr>).
+        */
+
+        // Inserindo estação no extremo norte (início do vetor)
+        linha.unshift('City Petrópolis')
+
+        // Inserindo estação no extremo sul (fim do vetor)
+        linha.push('Aeroporto IV')
+
+        // Loop for..of
+        for(let estacao of linha) {
+            document.write(estacao + '<br>')
+        }
+        document.write('<hr>')  // Traço
+
+        /*
                 
             Já em 2125, foi criada a estação Vila Imperador, entre
             as estações Santa Teresinha e Estação, para atender à grande
@@ -39,7 +75,32 @@
             3) Insira as novas estações no vetor nas posições apropriadas.
                 Faça um loop for TRADICIONAL EM SENTIDO INVERSO para exibir
                 as estações e depois passe um traço horizontal (<hr>).
-                
+
+        */
+
+        // Inserindo a estação Vila Imperador na posição atualmente
+        // ocupada pela estação Estação (posição 2)
+        linha.splice(2, 0, 'Vila Imperador')
+
+        // Alternativa 1: (se não soubermos antes a posição de Estação)
+        // let posicao = linha.indexOf('Estação')
+        // linha.splice(posicao, 0, 'Vila Imperador')
+
+        // Alternativa 2:
+        // linha.splice(linha.indexOf('Estação'), 0, 'Vila Imperador')
+
+        // Inserindo a estação Jardim Alvorada no lugar ocupado pela
+        // estação Aeroporto I
+        linha.splice(linha.indexOf('Aeroporto I'), 0, 'Jardim Alvorada')
+
+        // Loop for tradicional em sentido inverso
+        for(let i = linha.length - 1; i >= 0; i--) {
+            document.write(linha[i] + '<br>')    
+        }
+        document.write('<hr>')  // Traço
+
+
+        /*        
             Em 2130, a estação Centro foi desativada, e em seu lugar duas
             novas estações entraram em funcionamento: as estações 9 de Julho
             e Champagnat.
@@ -47,6 +108,19 @@
             4) Modifique o vetor de acordo com as alterações.
                 Faça um loop for TRADICIONAL para exibir as estações e depois
                 passe um traço horizontal (<hr>).
+
+        */
+        
+        // Substituição: sai Centro e entra 9 de Julho e Champagnat no lugar
+        linha.splice(linha.indexOf('Centro'), 1, '9 de Julho', 'Champagnat')
+
+        // Loop for tradicional
+        for(let i = 0; i < linha.length; i++) {
+            document.write(linha[i] + '<br>')
+        }
+        document.write('<hr>')  // Traço
+
+        /*
                 
             Em 2133, no entanto, Franca entrou em guerra com os 
             restinguenses, que invadiram e destruíram as duas estações 
@@ -57,7 +131,25 @@
                 Faça um loop FOR...OF para exibir as estações e depois
                 passe um traço horizontal (<hr>).            
         */
-     
+
+        // Removendo as duas estações mais ao sul (as duas últimas)
+        linha.pop() // Tira a última
+        linha.pop() // Tira a penúltima
+
+        // Alternativa 1:
+        // linha.splice(linha.indexOf('Aeroporto I'), 2)
+
+        // Alternativa 2:
+        // linha.splice(linha.length - 2, 2)
+
+        // Removendo a estação Santa Teresinha
+        linha.splice(linha.indexOf('Santa Teresinha'), 1)
+
+        // Loop for..of
+        for(let parada of linha) {
+            document.write(parada + '<br>')
+        }
+        document.write('<hr>')  // Traço     
        
     </script>
 </head>
