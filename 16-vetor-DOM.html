@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora com registro</title>
+    <style>
+        * { /* Todos os elementos */
+            font-family: Calibri, Arial, sans;
+        }
+        #fita { /* Elemento cujo id é fita */
+            background-color: khaki;
+            text-align: right;
+            font-size: 20px;
+            width: 250px; /* Largura */
+            padding: 20px;      /* Espaçamento interno */
+            /* 4 valores no margin:
+                1º top (superior)
+                2º right (direita)
+                3º bottom (inferior)
+                4º left (esquerdo)
+                Começa de cima e segue o sentido horário
+                Quando temos auto à esquerda e à direita, o 
+                elemento fica centralizado na horizontal
+            */
+            margin: 30px auto 0 auto;   /* Espaçamento externo */
+            /* Valores do box-shadow:
+               1º deslocamento horizontal
+               2º deslocamento vertical
+               3º embaçamento da sombra
+               4º cor da sombra
+            */
+            box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+        }
+        #fita p {   /* Todos os p que estiverem dentro da div fita */
+            font-family: Consolas, "Courier New", monospace;
+        }
+        #total {
+            font-weight: bold; /* Negrito */
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Calculadora com registro</h1>
+    
+    <label for="num">Número:</label>
+    <input type="number" id="num" value="0">
+    <button id="limpar">Limpar</button>
+
+    <div id="fita">
+        <hr>
+        <p id="total">0</p>
+    </div>
+    
+    <script>
+        // Ativa verificações adicionais de variáveis
+        // Modo "chato" do JavaScript
+        'use strict'
+
+        /* Captura dos elementos */
+        const elNum = document.querySelector('#num')
+        const elLimpar = document.querySelector('#limpar')
+        const elFita = document.querySelector('#fita')
+        const elTraco = document.querySelector('hr')
+        const elTotal = document.querySelector('#total')
+
+        // Vetor de números
+        const numeros = []      // Vetor vazio
+        
+    </script>
+</body>
+</html>
