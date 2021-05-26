@@ -45,7 +45,7 @@
     <h1>Calculadora com registro</h1>
     
     <label for="num">Número:</label>
-    <input type="number" id="num" value="0">
+    <input type="number" id="num">
     <button id="limpar">Limpar</button>
 
     <div id="fita">
@@ -62,11 +62,72 @@
         const elNum = document.querySelector('#num')
         const elLimpar = document.querySelector('#limpar')
         const elFita = document.querySelector('#fita')
-        const elTraco = document.querySelector('hr')
-        const elTotal = document.querySelector('#total')
+        let elTraco = document.querySelector('hr')
+        let elTotal = document.querySelector('#total')
 
         // Vetor de números
-        const numeros = []      // Vetor vazio
+        let numeros = []      // Vetor vazio
+
+        // event é um parâmetro que é passado para toda função
+        // associada a um evento no DOM. Quando não precisamos
+        // dele (como em todos os exercícios até agora), podemos
+        // ignorá-lo
+        function adicionarNumero(event) {
+            
+            // Só quando for pressionada a tecla Enter
+            if(event.key === 'Enter') {
+                
+                // Pegamos o valor do input e *tentamos* transformar
+                // em número
+                let num = Number(elNum.value)
+
+                if(! isNaN(num)) {      // Se a conversão tiver dado certo
+
+                    // Adicionar o número ao vetor
+                    numeros.push(num)
+
+                    // Criar um novo parágrafo para exibir num e
+                    // inserir esse parágrafo antes do traço
+                    let paragNum = document.createElement('p')
+                    paragNum.textContent = num
+                    elFita.insertBefore(paragNum, elTraco)
+
+                    // Percorrer o vetor usando um loop for..of
+                    // para somar os números e mostrar no total
+                    let soma = 0
+                    for(let n of numeros) {
+                        soma += n
+                    }
+                    elTotal.textContent = soma
+
+                    // Limpa o input
+                    elNum.value = ''
+
+                }
+            }
+        }
+
+        function limpar() {
+            // Reseta o conteúdo da fita (recria elementos)
+            elFita.innerHTML = '<hr><p id="total">0</p>'
+
+            // Como o traço e o parágrafo do total foram recriados,
+            // eles precisam ser capturados novamente
+            elTraco = document.querySelector('hr')
+            elTotal = document.querySelector('#total')
+
+            // Reinicia o vetor, vazio
+            numeros = []
+
+            elNum.value = ''    // Limpa o input num
+            elNum.focus()       // Coloca o foco no input num
+        }
+
+        // Quando uma tecla for pressionada para baixo no input num 
+        // (evento keydown), será invocada a função adicionarNumero
+        elNum.addEventListener('keydown', adicionarNumero)
+        
+        elLimpar.addEventListener('click', limpar)
         
     </script>
 </body>
