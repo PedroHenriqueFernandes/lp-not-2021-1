@@ -63,19 +63,44 @@
             sexo: 'F',
             nome: 'Euripa Emiliano',
             // Em alguns casos, precisamos lidar com propriedades contendo
-            // espacos ou acentos. Nesses casos, o nome da propriedade deve
+            // espaços ou acentos. Nesses casos, o nome da propriedade deve
             // vir entre aspas (simples ou duplas)
             'documento de identidade': '44.444.444-44',
             peso: 89,
             email: 'euripae@hotmail.com',
             altura: 1.8
-            
         }
 
         let imc4 = objPaciente4.peso / (objPaciente4.altura ** 2)
         document.write(`O IMC da paciente ${objPaciente4.nome} é ${imc4}<br>`)
         
+        // Acessando as propriedades de um objeto por meio de variáveis que
+        // contêm o nome das propriedades. Nesse caso, é necessário usar a
+        // sintaxe dos colchetes
+        let nomeProp1 = 'nome'
+        let nomeProp2 = 'idade'
+        let nomeProp3 = 'peso'
 
+        document.write(`Nome do paciente 4: ${objPaciente4[nomeProp1]}<br>`)
+        document.write(`Idade do paciente 4: ${objPaciente4[nomeProp2]}<br>`)
+        document.write(`Peso do paciente 4: ${objPaciente4[nomeProp3]}<br>`)
+
+        // Como descobrir o nome de todas as propriedades de um objetos?
+        // Resposta: loop for..in
+
+        document.write('---------------------------------<br>')
+
+        // Descobrindo as propriedades do objPaciente2
+        for(let prop in objPaciente2) {
+            document.write(prop + '<br>')
+        }
+
+        document.write('---------------------------------<br>')
+
+        // Listagem de um objeto com o loop for..in
+        for(let key in objPaciente1) {
+            document.write(`${key} => ${objPaciente1[key]}<br>`)
+        } 
 
     </script>
 </head>
