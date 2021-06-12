@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página modelo</title>    
+</head>
+<body>
+    <label for="nome">Nome:</label>
+    <input id="nome">
+    
+    <label for="email">E-mail:</label>
+    <input id="email" type="email">
+
+    <button id="enviar">Enviar</button>
+
+    <div id="resultado"></div>
+
+    <script>
+        // Ativa verificações adicionais de variáveis
+        // Modo "chato" do JavaScript
+        'use strict'
+
+        // Capturar os elementos do formulário
+        const elNome = document.querySelector('#nome')
+        const elEmail = document.querySelector('#email')
+        const elEnviar = document.querySelector('#enviar')
+        const elResultado = document.querySelector('#resultado')
+
+        // Vetor vazio
+        let cadastro = []
+
+        function enviar() {
+            // Validando se os campos foram preenchidos
+            let valido = true
+
+            if(elNome.value === '') {
+                alert('Preencha o nome.')
+                elNome.focus()
+                valido = false
+            }
+
+            if(elEmail.value === '') {
+                alert('Preencha o email.')
+                elEmail.focus()
+                valido = false
+            }
+
+            if(valido) {
+                // Inserir os dados no vetor
+                cadastro.push(elNome.value)
+                cadastro.push(elEmail.value)
+
+                // Mostra todos os cadastrados
+                elResultado.innerHTML = ''
+                for(let info of cadastro) {
+                    elResultado.innerHTML += info + '<br>'
+                }
+
+                elResultado.innerHTML += `<p>${JSON.stringify(cadastro)} e o IMC da pessoa é ${imc(72, 1.81)}</p>`
+
+                elNome.value = ''
+                elEmail.value = ''
+                elNome.focus()
+            }
+        }
+        
+        elEnviar.addEventListener('click', enviar)
+
+        function imc(peso, altura) {
+            return peso / altura ** 2
+        }
+
+        //alert('O IMC de uma pessoa com 72kg e 1,81 de altura é ' + imc(72, 1.81))
+
+        function faixaImc(imc) {
+
+        }
+    </script>
+
+</body>
+</html>

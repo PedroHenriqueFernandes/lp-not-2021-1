@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página modelo</title>    
+</head>
+<body>
+    <label for="nome">Nome:</label>
+    <input id="nome">
+    
+    <label for="email">E-mail:</label>
+    <input id="email" type="email">
+
+    <button id="enviar">Enviar</button>
+
+    <div id="resultado"></div>
+
+    <script>
+        // Ativa verificações adicionais de variáveis
+        // Modo "chato" do JavaScript
+        'use strict'
+
+        // Capturar os elementos do formulário
+        const elNome = document.querySelector('#nome')
+        const elEmail = document.querySelector('#email')
+        const elEnviar = document.querySelector('#enviar')
+        const elResultado = document.querySelector('#resultado')
+
+        // Vetor vazio
+        let cadastro = []
+
+        elResultado.innerHTML += `<p>${JSON.stringify(cadastro)}</p>`
+
+        function enviar() {
+            // Validando se os campos foram preenchidos
+            let valido = true
+
+            if(elNome.value === '') {
+                alert('Preencha o nome.')
+                elNome.focus()
+                valido = false
+            }
+
+            if(elEmail.value === '') {
+                alert('Preencha o email.')
+                elEmail.focus()
+                valido = false
+            }
+
+            if(valido) {
+                // Cria um objeto vazio
+                let pessoa = {}
+                pessoa.nome = elNome.value
+                pessoa.email = elEmail.value
+                
+                // Inserir o objeto no vetor
+                cadastro.push(pessoa)
+
+                // Mostra todos os cadastrados
+                elResultado.innerHTML = ''
+                for(let p of cadastro) {
+                    elResultado.innerHTML += p.nome + '<br>'
+                    elResultado.innerHTML += p.email + '<br>'
+                    elResultado.innerHTML += '<hr>'
+                }
+
+                elResultado.innerHTML += `<p>${JSON.stringify(cadastro)}</p>`
+
+                elNome.value = ''
+                elEmail.value = ''
+                elNome.focus()
+            }
+        }
+        
+        elEnviar.addEventListener('click', enviar)
+
+        function imc(peso, altura) {
+            return peso / altura ** 2
+        }
+
+        //alert('O IMC de uma pessoa com 72kg e 1,81 de altura é ' + imc(72, 1.81))
+
+        function faixaImc(imc) {
+
+        }
+    </script>
+
+</body>
+</html>

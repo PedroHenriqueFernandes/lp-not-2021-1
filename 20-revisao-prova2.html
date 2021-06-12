@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página modelo</title>
+    
+</head>
+<body>
+    
+    <div id="quadro" style="border: 1px solid red"></div>
+
+    <script>
+        // Ativa verificações adicionais de variáveis
+        // Modo "chato" do JavaScript
+        'use strict'
+
+        // Criação de elementos via JS
+        let h1 = document.createElement('h1')
+        h1.textContent = 'Revisão para Prova 2'
+        document.body.appendChild(h1)
+
+        // Novo parágrafo no body
+        let p1 = document.createElement('p')
+        p1.textContent = 'Isto é um parágrafo.'
+        document.body.appendChild(p1)
+
+        // Capturando a div pelo seu id
+        let quadro = document.querySelector('#quadro')
+
+        let p2 = document.createElement('p')
+        p2.textContent = 'Isto é um parágrafo também.'
+        quadro.appendChild(p2)
+
+        // Declaração de função, pode ser chamada de qualquer ponto do código
+        function soma1(x, y) {
+            return x + y
+        }
+
+        // Expressão de função, só pode ser chamada deste ponto para baixo
+        const soma2 = function(x, y) {
+            return x + y
+        }
+        
+        let result1 = soma1(10, 20)
+        let result2 = soma2(10, 20)
+        
+
+    </script>
+    
+</body>
+</html>
