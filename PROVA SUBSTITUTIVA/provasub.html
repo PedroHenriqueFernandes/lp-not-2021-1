@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de notas</title>
+    <style>
+        * {
+            font-family: Calibri, Arial, sans;
+        }
+        body {
+            background-color: cadetblue;
+        }
+        main {
+            margin: 50px auto;
+            max-width: 75%;
+            background: #444;
+            color: white;
+            border-radius: 16px;
+            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
+            padding: 30px;
+            text-align: center;
+        }
+        h1 {
+            color: cadetblue;
+            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.25);
+        }
+        div {
+            margin: 16px;
+        }
+        label {
+            display: block;
+        }
+        button {
+            font-size: 120%;
+            background-color: cadetblue;
+            color: white;
+            border: 2px solid white;
+            border-radius: 6px;
+        }
+        input {
+            border-radius: 6px;
+        }
+        #relat {
+            border-top: 2px solid white;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Cadastro de notas</h1>
+        <div>
+            <label for="nome">Nome</label>
+            <input id="nome">
+        </div>
+        <div>
+            <label for="nota1">Nota 1</label>
+            <input id="nota1" type="number">
+        </div>
+        <div>
+            <label for="nota2">Nota 2</label>
+            <input id="nota2" type="number">
+        </div>
+        <div>
+            <button id="enviar">Enviar</button>
+        </div>
+        <div id="relat"></div>
+    </main>
+    
+    <script>
+        // Ativa verificações adicionais de variáveis
+        // Modo "chato" do JavaScript
+        'use strict'
+
+        /*
+            2) Faça a captura de todos os elementos HTML que possuam o atributo id.
+        */
+        const elNome = document.querySelector('#nome')
+        // Alternativa: const elNome = document.getElementById('nome')
+        const elNota1 = document.querySelector('#nota1')
+        const elNota2 = document.querySelector('#nota2')
+        const elEnviar = document.querySelector('#enviar')
+        const elRelat = document.querySelector('#relat')
+
+        /*
+            3) Declare uma função que receba dois números e calcule a média aritmética entre eles.
+        */
+        function calcMedia(n1, n2) {
+            return (n1 + n2) / 2
+        }
+
+        /*
+            4) Declare outra função que receba um número e retorne a string 'APROVADO' se o citado número for maior ou igual a 6; ou 'REPROVADO', caso contrário.
+        */
+        function determinarSituacao(nota) {
+            if (nota >= 6) {
+                return 'APROVADO'
+            }
+            else {
+                return 'REPROVADO'
+            }
+        }
+
+        /*
+            5) Declare uma terceira função, sem parâmetros. Nela, faça a validação dos campos: o nome não pode ficar em branco e as notas devem ser numéricas, no intervalo inclusivo entre 0 (zero) e 10 (dez).
+        */
+        function cadastrar() {
+
+            let valido = true
+            let nota1 = parseFloat(elNota1.value)
+            let nota2 = parseFloat(elNota2.value)
+
+            if(elNome.value === '') {
+                alert('Preencha o nome do aluno.')
+                elNome.focus()
+                valido = false
+            }
+            else if(isNaN(nota1) || nota1 < 0 || nota1 > 10) {
+                alert('A nota 1 deve estar entre 0 (zero) e 10 (dez).')
+                elNota1.focus()
+                valido = false
+            }
+            else if(isNaN(nota2) || nota2 < 0 || nota2 > 10) {
+                alert('A nota 2 deve estar entre 0 (zero) e 10 (dez).')
+                elNota2.focus()
+                valido = false
+            }
+
+            /*
+                6) Ainda dentro da função declarada na etapa 5, se os campos forem válidos, chame as funções declaradas nas etapas 3 e 4 para, respectivamente, calcular a média entre as notas e determinar a situação (aprovado ou reprovado) do aluno.
+            */
+            if(valido) {
+                
+                let media = calcMedia(nota1, nota2)
+                let situacao = determinarSituacao(media)
+
+                /*
+                    7) Continuando na função iniciada na etapa 5, crie um elemento de parágrafo e preencha-o com as informações. Em seguida, crie também um traço horizontal e encaixe os elementos criados na estrutura DOM do documento. A imagem abaixo demonstra o resultado pretendido, depois de inseridos dois alunos.
+                */
+                
+                let elParag = document.createElement('p')
+                elParag.innerHTML = `Nome: ${elNome.value}<br>Média: ${media}<br>Situação: ${situacao}`
+                elRelat.appendChild(elParag)
+
+                let elTraco = document.createElement('hr')
+                elRelat.appendChild(elTraco)
+
+                /*
+                    8) Ainda dentro da função iniciada na etapa 5, limpe os três campos e coloque o foco no campo “Nome”.
+                */
+                elNome.value = ''
+                elNota1.value = ''
+                elNota2.value = ''
+                elNome.focus()
+            }
+        }
+
+        /*
+            9) Já fora da função, associe o clique to botão “Enviar” à função iniciada na etapa 5.
+        */
+        elEnviar.addEventListener('click', cadastrar)
+        
+    </script>
+    
+</body>
+</html>
